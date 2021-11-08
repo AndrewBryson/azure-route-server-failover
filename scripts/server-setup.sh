@@ -1,6 +1,9 @@
 # Install node.js (web server) and ExaBGP
 sudo apt update
-sudo apt install -y nodejs exabgp
+sudo apt install -y exabgp
+curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install -y nodejs
 
 # Loopback VIP (9.9.9.9) configuration
 #sudo ifconfig lo:9 9.9.9.9 netmask 255.255.255.255 up
