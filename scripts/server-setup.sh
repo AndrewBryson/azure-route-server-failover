@@ -5,10 +5,10 @@ curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt install -y nodejs
 
-# Loopback VIP (9.9.9.9) configuration
-#sudo ifconfig lo:9 9.9.9.9 netmask 255.255.255.255 up
+# Loopback VIP (10.1.0.5) configuration
+#sudo ifconfig lo:9 10.1.0.5 netmask 255.255.255.255 up
 sudo ip link add name vip type dummy \
-    && ifconfig vip 9.9.9.9 netmask 255.255.255.255 up
+    && ifconfig vip 10.1.0.5 netmask 255.255.255.255 up
 
 # ExaBGP config
 ARS1=10.0.1.4
@@ -23,18 +23,22 @@ neighbor $ARS1 {
 	local-address $IP;
 	local-as $MY_ASN;
 	peer-as $REMOTE_ASN;
+	static {
+		route 10.1.0.5/32 next-hop $IP;
+	}
 }
 neighbor $ARS2 {
 	router-id $IP;
 	local-address $IP;
 	local-as $MY_ASN;
 	peer-as $REMOTE_ASN;
+	static {
+		route 10.1.0.5/32 next-hop $IP;
+	}
 }
 EOF
 
-# static {
-# 	route 9.9.9.9/32 next-hop $IP [ 65010 65010 65010 ];
-# 	}
+
 
 ## Start ExaBGP
 exabgp ./conf.ini
