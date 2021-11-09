@@ -13,5 +13,8 @@ sudo apt install -y nodejs
 sudo ip link add name vip type dummy 
 sudo ifconfig vip $VIP netmask 255.255.255.255 up
 
-## Start ExaBGP
-exabgp ./conf.ini
+# Start ExaBGP
+# exabgp ./conf.ini
+
+# Start node.js web application
+# e.g. ID=PRIMARY node $/web/server.js &

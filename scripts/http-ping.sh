@@ -6,6 +6,6 @@ URL=http://$VIP:3000
 
 while :; do 
     echo \
-    $(date) + $(curl --silent --no-keepalive -H 'Connection: close' $URL); 
+    $(date) + $(curl --connect-timeout 1 --silent --no-keepalive -H 'Connection: close' $URL); 
     sleep 1s; 
 done
