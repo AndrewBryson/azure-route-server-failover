@@ -1,6 +1,8 @@
 #!/bin/bash
 
-URL=http://10.1.0.5:3000
+VIP=10.1.0.5
+
+URL=http://$VIP:3000
 
 while :; do 
     echo \
