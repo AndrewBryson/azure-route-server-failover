@@ -36,8 +36,8 @@ Commands in order
 ## Configure exabgp
 
 ## Verify
-1. Ping from jumpbox: `ping 9.9.9.9`
-1. Web request: `curl http://9.9.9.9:3000`
+1. Ping from jumpbox: `ping 10.1.0.5`
+1. Web request: `curl http://10.1.0.5:3000`
 1. Run `$/scripts/http-ping.sh`.
 
 # Issues / Questions / Notes
