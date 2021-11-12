@@ -1,4 +1,6 @@
-# README
+# Overview
+
+![Overview diagram](/images/azure-route-server-failover.png)
 
 # Steps
 
