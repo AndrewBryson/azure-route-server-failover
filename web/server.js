@@ -1,13 +1,16 @@
-const express = require('express');
-const app = express();
+const http = require('http');
 
 const myId = process.env["ID"] || "NOT-SET"
 const port = process.env["PORT"] || 3000;
 
-app.get('/', function (req, res) {
-    res.send(`${myId}`);
-});
+http.createServer((request, response) => {
+    response.writeHead(200, {
+        'Content-Type': 'text/plain'
+    });
 
-app.listen(port, () => {
+    response.write(`${myId}`);
+    response.end();
+
+}).listen(port, () => {
     console.log(`Listening on port:${port}, ID:${myId}`);
 });
