@@ -13,6 +13,7 @@ neighbor $ARS1 {
 	local-address $IP;
 	local-as $MY_ASN;
 	peer-as $REMOTE_ASN;
+	hold-time 30;
 	static {
 		route $VIP next-hop $IP as-path [ $MY_ASN $MY_ASN $MY_ASN ];
 	}
@@ -22,6 +23,7 @@ neighbor $ARS2 {
 	local-address $IP;
 	local-as $MY_ASN;
 	peer-as $REMOTE_ASN;
+	hold-time 30;
 	static {
 		route $VIP next-hop $IP as-path [ $MY_ASN $MY_ASN $MY_ASN ];
 	}
