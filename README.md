@@ -80,9 +80,15 @@ This example snippet showing the VIP effective route failing over to the seconda
 These timings have been gathered crudely using aligned timestamps across VMs, nothing fancier than that!  Snippets of the terminal output have been shared for one attempt in each scenario, and other 3 timings given separately.
 
 ### Scenario 1 - primary to secondary failover (graceful termination)
+
 Failover time: **<2 seconds**  
 Start: 09:48:04  
 End: 09:48:06   
+
+Other attempts:
+1. <5 seconds
+2. <4 seconds
+3. <2 seconds
 
 Client
 ```
@@ -128,15 +134,15 @@ Secondary
 09:48:05 | 4911   | outgoing-1    | send-timer 8 second(s) left
 ```
 
-Other attempts:
-1. <5 seconds
-2. <4 seconds
-3. <2 seconds
-
 ### Scenario 2 - secondary to primary recovery
 Failover time: **<5 seconds**  
 Start: 09:53:42  
 End: 09:53:47  
+
+Other attempts:
+1. <1 second
+2. <3 seconds
+3. <1 second
 
 Client
 ```
@@ -176,11 +182,6 @@ Secondary
 09:53:43 | 4911   | outgoing-1    | send-timer 9 second(s) left
 ```
 
-Other attempts:
-1. <1 second
-2. <3 seconds
-3. <1 second
-
 ### Scenario 3 - `kill -9` of primary `exabgp` (abrupt termination)
 
 `kill` and timing method example:
@@ -193,8 +194,16 @@ Tue Nov 23 10:17:34 UTC 2021
 ```
 
 Failover time: **<2 seconds**  
-Start: 10:17:34
-End: 10:17:36
+Start: 10:17:34  
+End: 10:17:36  
+
+Other attempts:
+1. <1 second
+2. <1 second
+3. <2 seconds
+
+Good failover times!
+
 
 Client
 ```
@@ -232,13 +241,6 @@ Secondary
 10:17:34 | 4911   | peer-1        | << UPDATE #21
 10:17:34 | 4911   | peer-1        |    UPDATE #21 nlri  (   5) 10.1.0.5/32
 ```
-
-Other attempts:
-1. <1 second
-2. <1 second
-3. <2 seconds
-
-Amazingly good failover times!
 
 # Further Notes
 1. Route changes seem to have a dampening/anti-flapping window of 30 seconds, i.e.
