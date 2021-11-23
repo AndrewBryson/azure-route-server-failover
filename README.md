@@ -193,8 +193,8 @@ Tue Nov 23 10:17:34 UTC 2021
 ```
 
 Failover time: **<2 seconds**  
-Start: 10:08:58
-End: 10:09:00
+Start: 10:17:34
+End: 10:17:36
 
 Client
 ```
